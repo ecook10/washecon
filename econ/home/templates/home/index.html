@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'home/stylesheets/index.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'home/stylesheets/jquery-ui.min.css' %}" />
+
+<div id="header">
+    <div id="header-content">
+        <img src="{% static 'home/images/washington.png' %}" alt="Washington Logo" width="168" height="123" />
+        <h2>Washington State</br>
+            Economic Research Center</h2>
+    </div>
+
+    <div id="toolbar">
+        <ul>
+            <li id="home-tab"><a href="/" class="active">Home</a></li>
+            <li id="browse-tab"><a href="/regionaldata/browse">Browse Data</a></li>
+            <li id="search-tab"><a href="/regionaldata/search">Search Data</a></li>
+            <li id="more-tab"><a href="#">More eventually...</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="body">
+    <form action="/regionaldata/search/" method="get">
+        <input type="search" id="search" name="q" placeholder="Search for Data" />
+    </form>
+    <h3>Or</h3>
+    <a href="/regionaldata/browse" id="browse">Browse Data</a>
+</div>
+
+<div id="footer">
+    Some sexy footer content here...
+</div>
+
+<script type="text/javascript" src="{% static 'home/javascripts/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/javascripts/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/javascripts/index.js' %}"></script>
+
