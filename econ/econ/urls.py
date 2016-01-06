@@ -21,7 +21,7 @@ from home.views import index
 
 urlpatterns = [
     url(r'^$', index, name='home'),
-    # url(r'^regionaldata/', include('regionaldata.urls', namespace='regionaldata')),
+    url(r'^regionaldata/', include('regionaldata.urls', namespace='regionaldata')),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
