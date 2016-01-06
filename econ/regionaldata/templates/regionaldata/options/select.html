@@ -1,0 +1,15 @@
+<div class="select">
+
+    <ul class="selectable" style="display:none;"></ul>
+
+    <div class="loading">Loading...</div>
+
+    <button class="submit">Continue</button>
+
+    <div class="params" style="display: none;">
+    {% for param in params %}
+        <input type="hidden" class="{{ param.text }}" value="{{ param.value }}">
+    {% endfor %}
+    </div>
+
+</div>

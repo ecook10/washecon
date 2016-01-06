@@ -1,0 +1,71 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/global.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/select.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/spectrum.css' %}" />
+
+{% include "regionaldata/header.html" with browse_active=True%}
+
+<div id="main">
+
+    <div id="chart"></div>
+
+    <div id="options" class="tabs">
+
+        <ul id="tab-headers">
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#graph">Graph</a></li>
+            <li><a href="#share">Share</a></li>
+            <li><a href="#export">Export</a></li>
+            <li><a href="#cite">Cite</a></li>
+        </ul>
+
+        <div id="notes" class="active">Some brief notes on the displayed statistic.</div>
+        <div id="graph">
+            <div id="graph-options" class="accordion">
+                <h3>Graph Settings</h3>
+                <div>
+
+                    <p>Edit global chart options</p>
+                </div>
+                <h3>Compare</h3>
+                <div>
+                    <p>Add different states and/or statistics!!!</p>
+                    <select id="compare-state">
+                        <option value="empty">SELECT A STATE</option>
+                    </select>
+                    <select id="compare-stat">
+                        <option value="empty">SELECT A STATISTIC</option>
+                    </select>
+                    <button id="add">Add</button>
+                </div>
+            </div>
+        </div>
+        <div id="share">Let user share graph on social media, embed in a site, etc.</div>
+        <div id="export">Options for exporting (as PDF, get graph data as spreadsheet, etc.)</div>
+        <div id="cite">Include suggested citation here</div>
+
+    </div>
+
+</div>
+
+{% include 'regionaldata/footer.html' %}
+
+
+<div id="error" style="display: none;">
+    <h1>Error</h1>
+    <div id="message"></div>
+</div>
+
+{% for p in params %}
+    <input id="{{ p.key }}" type="hidden" value="{{ p.value }}" />
+{% endfor %}
+
+
+
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/myui.js' %}"></script>
+{% comment %} <script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery-ui.min.js' %}"></script> {% endcomment%}
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/highcharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/spectrum.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/showdata.js' %}"></script>

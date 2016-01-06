@@ -1,0 +1,83 @@
+
+
+
+
+#browse {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.select {
+    width: 70%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    background-color: #FDCF8B;
+    padding-top: 30px;
+}
+
+.selectable {
+    list-style-type: none;
+    height: 350px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: scroll;
+    padding: 10px 20px;
+}
+
+.selectable li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.selectable .ui-selectee {
+    display: block;
+}
+
+.selectable .ui-selected {
+    background-color: #006543;
+    color: white;
+}
+
+
+#industry .selectable {
+    width: 80%;
+}
+
+#year .ui-slider {
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.radio {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    padding: 40px;
+    background-color: #FDCF8B;
+    font-size: 16pt;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #006543;
+    color: white;
+}
+
+.select button {
+    margin-left: 60px;
+}
+
+
+
+
+

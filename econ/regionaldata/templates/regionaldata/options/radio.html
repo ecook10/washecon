@@ -1,0 +1,11 @@
+
+<div class="radio">
+
+{% for param in params %}
+    <input type="radio" name="option_values" value="{{ param.value }}"> {{ param.text }}
+    <br />
+{% endfor %}
+
+<button class="submit">Continue</button>
+
+</div>

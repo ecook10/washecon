@@ -1,0 +1,62 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/jquery-ui.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/browse.css' %}" />
+
+{% if this %}
+    <h3>{{ this.name }}</h3>
+    <input type="hidden" value="{{ this.key }}" id="series_key">
+{% endif %}
+
+<div id="main" class="tabs">
+    <ul id="tab_headers">
+        <li><a href="#search">Search</a></li>
+
+        {% for option in options %}
+            <li id="{{ option.key }}_tab" style="display: none;"><a href="#{{ option.key }}">{{ option.name }}</a></li>
+        {% endfor %}
+
+    </ul>
+
+    <div id="search">
+        <form action="/regionaldata/search" method="get">
+            {% if query %}
+            <input type="search" name="q" value="{{ query }}" />
+            {% else %}
+            <input type="search" name="q"/>
+            {% endif %}
+        </form>
+
+        <ul id="results">
+        {% for result in results %}
+            <a href="/regionaldata/search/{{ result.id }}/?q={{ query }}"><li>{{ result.name }}</li></a>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+    {% for option in options %}
+        <div id="{{ option.key }}" class="option">
+            {% with option.template as template_url %}
+                {% include template_url with params=option.option_params %}
+            {% endwith %}
+
+            <input type="hidden" value="{{ option.key }}" class="key">
+            <input type="hidden" value="{{ option.method }}" class="method">
+        </div>
+    {% endfor %}
+
+    <div id="parameters">
+        {% for param in parameters %}
+            <input type="hidden" class="{{ param.key }}" value="{{ param.value }}">
+        {% endfor %}
+    </div>
+
+</div>
+
+<p><a href="/regionaldata/browse/">Browse Instead</a></p>
+
+
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/selectseries.js' %}"></script>

@@ -1,0 +1,77 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/global.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'regionaldata/stylesheets/browse.css' %}" />
+
+{% include "regionaldata/header.html" with browse_active=True%}
+
+{% if this %}
+    <input type="hidden" value="{{ this.key }}" id="series_key">
+{% endif %}
+
+<div id="main" class="tabs">
+    <ul id="tab-headers">
+
+        <a href="#browse"><li class="active-tab-header">Categories</li></a>
+
+        {% for option in options %}
+            <a href="#{{ option.key }}"><li id="{{ option.key }}_tab" style="display: none;">{{ option.name }}</li></a>
+        {% endfor %}
+
+        {% if this %}
+            <li id="series-name">{{ this.name }}</li>
+        {% endif %}
+
+
+    </ul>
+
+    <div id="browse">
+        <div class="accordion">
+            {% for cat in categories %}
+
+                {% if cat.change == -1 %}
+                    </div></div></div>
+                {% elif cat.change == 1 %}
+                    <div class="accordion">
+                {% elif cat.change == 0 %}
+                    </div>
+                {% endif %}
+
+                <h3><span class="category_name">{{ cat.name }}</span></h3>
+                <div>
+
+                {% for s in cat.series %}
+                    <span class="series_link"><a href="{% url 'regionaldata:browse' s.id %}" class="select-series">{{ s.name }}</a></span>
+                {% endfor %}
+
+            {% endfor %}
+            </div></div></div></div>
+
+    </div>
+
+    {% for option in options %}
+        <div id="{{ option.key }}" class="option">
+            {% with option.template as template_url %}
+                {% include template_url with params=option.option_params %}
+            {% endwith %}
+
+            <input type="hidden" value="{{ option.key }}" class="key">
+            <input type="hidden" value="{{ option.method }}" class="method">
+        </div>
+    {% endfor %}
+
+    <div id="parameters">
+        {% for param in parameters %}
+            <input type="hidden" class="{{ param.key }}" value="{{ param.value }}">
+        {% endfor %}
+    </div>
+
+
+</div>
+
+{% include 'regionaldata/footer.html' %}
+
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/myui.js' %}"></script>
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/selectseries.js' %}"></script>

@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<div id="header">
+    <div id="header-content">
+        <img src="{% static 'regionaldata/images/washington.png' %}" alt="Washington Logo" width="84" height="61" />
+        <h2>Washington State Economic Research Center</h2>
+    </div>
+
+    <div id="toolbar">
+        <ul>
+            <li id="home-tab"><a href="/">Home</a></li>
+
+            {% if browse_active %}
+            <li id="browse-tab"><a href="/regionaldata/browse" class="active">Browse Data</a></li>
+            {% else %}
+            <li id="browse-tab"><a href="/regionaldata/browse">Browse Data</a></li>
+            {% endif %}
+
+            {% if search_active %}
+                <li id="search-tab"><a href="/regionaldata/search" class="active">Search Data</a></li>
+            {% else %}
+                <li id="search-tab"><a href="/regionaldata/search">Search Data</a></li>
+            {% endif %}
+
+            <li id="more-tab"><a href="#">More eventually...</a></li>
+        </ul>
+    </div>
+</div>

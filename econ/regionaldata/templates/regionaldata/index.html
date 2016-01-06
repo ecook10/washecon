@@ -1,0 +1,11 @@
+{% load staticfiles %}
+
+<h1>Washington State Economic Statistics</h1>
+
+<ul>
+{% for category in category_list %}
+    <li><a href="{% url 'regionaldata:select' category.KeyCode %}">{{ category.Description }}</a></li>
+{% endfor %}
+</ul>
+
+<script type="text/javascript" src="{% static 'regionaldata/javascripts/jquery.min.js' %}"></script>
