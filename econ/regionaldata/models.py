@@ -10,8 +10,14 @@ class Category(models.Model):
     # parent = models.CharField(max_length=200)
 
     def __str__(self):
-        parent = Category.objects.get(id=self.parent.id)
-        return self.name + "<--" + parent.name
+
+        if self.parent != None:
+            parent = Category.objects.get(id=self.parent.id)
+            return self.name + "<--" + parent.name
+
+        else:
+            return self.name
+
 
     def get_nested_list(self, depth=0):
         final = []
