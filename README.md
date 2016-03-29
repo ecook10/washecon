@@ -44,7 +44,7 @@ Main design considerations include...
 * Apply styles to entire site
 * Add data to AWS database service (RDS)
 * Fix bugs in graphing displays
-* Work with UW Economics professor Theo Eicher to add features allowing for more extensive data manipulation
+* Additional features allowing for more extensive data manipulation
 
 ---
 
